@@ -11,6 +11,7 @@ import { ColorSampleComponent } from './color-sample/color-sample.component';
 import { CustomeDirectiveComponent } from './custome-directive/custome-directive.component';
 import { CollapseOnClickDirective } from './directives/collapse-on-click.directive';
 import { NgForExampleComponent } from './ng-for-example/ng-for-example.component';
+import { NgIfExampleComponent } from './ng-if-example/ng-if-example.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NgForExampleComponent } from './ng-for-example/ng-for-example.component
     ColorSampleComponent,
     CustomeDirectiveComponent,
     CollapseOnClickDirective,
-    NgForExampleComponent
+    NgForExampleComponent,
+    NgIfExampleComponent
 ],
   imports: [
     BrowserModule,

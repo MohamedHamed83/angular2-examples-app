@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <h3>Removing from the dom</h3>
+    <div class="toggle-panel" *ngIf="show">toggle show Me</div>
+
+    <button type="button" class="btn btn-default" (click)="toggleShow()">toggle show </button>
+  </div>
+
+  <div class="row">
+    <h3>hidden</h3>
+    <div class="toggle-panel" *ngIf="show" [hidden]="hidden">toggle hide Me</div>
+
+    <button type="button" class="btn btn-default" (click)="toggleHidden()">toggle show </button>
+  </div>
+</div>
