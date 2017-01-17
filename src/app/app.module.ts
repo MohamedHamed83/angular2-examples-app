@@ -10,6 +10,7 @@ import { ColorPreviewerComponent } from './color-previewer/color-previewer.compo
 import { ColorSampleComponent } from './color-sample/color-sample.component';
 import { CustomeDirectiveComponent } from './custome-directive/custome-directive.component';
 import { CollapseOnClickDirective } from './directives/collapse-on-click.directive';
+import { NgForExampleComponent } from './ng-for-example/ng-for-example.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CollapseOnClickDirective } from './directives/collapse-on-click.directi
     ColorPreviewerComponent,
     ColorSampleComponent,
     CustomeDirectiveComponent,
-    CollapseOnClickDirective
+    CollapseOnClickDirective,
+    NgForExampleComponent
 ],
   imports: [
     BrowserModule,

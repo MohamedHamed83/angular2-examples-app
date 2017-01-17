@@ -1,1 +1,1 @@
-export {BLUE, RED} from './constants';
+export {BLUE, RED, Heros} from './constants';
