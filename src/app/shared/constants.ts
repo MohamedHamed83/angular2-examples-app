@@ -5,12 +5,15 @@ export const Heros = [
     id: 1, name: 'Superman'
   },
   {
-    id: 2, name: 'Batman'
+    id: 2, name: 'Batman',
   },
   {
-    id: 3, name: 'Flash'
+    id: 3, name: 'Flash', marvel: true
   },
   {
     id: 4, name: 'Robin'
+  },
+  {
+    id: 5, name: 'hulk', marvel: true
   }
-]
+];

@@ -7,8 +7,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let hero of heroes; let i = index; trackBy: track(hero)">
-        <td>{{hero.name}}</td>
+      <tr *ngFor="let hero of heroes; let i = index; trackBy: track(hero)" [ngClass]="classes(hero)">
+        <td >{{hero.name}}</td>
         <td>{{i}}</td>
       </tr>
     </tbody>

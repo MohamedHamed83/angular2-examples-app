@@ -7,9 +7,16 @@ import { Heros } from '../shared';
   styleUrls: ['./ng-for-example.component.css']
 })
 export class NgForExampleComponent implements OnInit {
-  heroes= Heros;
-  track(hero){
+  heroes = Heros;
+  track(hero) {
     return hero ? hero.id : undefined;
+  }
+
+  classes(hero) {
+    return {
+      marvel: hero.marvel,
+      hulk: hero.name === 'hulk'
+    };
   }
   constructor() { }
 

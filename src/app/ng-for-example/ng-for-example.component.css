@@ -1,0 +1,8 @@
+.marvel{
+  background-color:green;
+  color: white
+}
+.marvel.hulk{
+  background-color: darkred;
+  color: white
+}
