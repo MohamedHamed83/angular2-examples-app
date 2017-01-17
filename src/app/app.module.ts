@@ -8,6 +8,9 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { ColorPreviewerComponent } from './color-previewer/color-previewer.component';
 import { ColorSampleComponent } from './color-sample/color-sample.component';
+import { CustomeDirectiveComponent } from './custome-directive/custome-directive.component';
+import { CollapseOnClickDirective } from './directives/collapse-on-click.directive';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { ColorSampleComponent } from './color-sample/color-sample.component';
     SearchBoxComponent,
     ColorPickerComponent,
     ColorPreviewerComponent,
-    ColorSampleComponent
+    ColorSampleComponent,
+    CustomeDirectiveComponent,
+    CollapseOnClickDirective
 ],
   imports: [
     BrowserModule,
