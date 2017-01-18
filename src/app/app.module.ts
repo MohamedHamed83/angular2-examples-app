@@ -12,6 +12,7 @@ import { CustomeDirectiveComponent } from './custome-directive/custome-directive
 import { CollapseOnClickDirective } from './directives/collapse-on-click.directive';
 import { NgForExampleComponent } from './ng-for-example/ng-for-example.component';
 import { NgIfExampleComponent } from './ng-if-example/ng-if-example.component';
+import { NgEventsExampleComponent } from './ng-events-example/ng-events-example.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgIfExampleComponent } from './ng-if-example/ng-if-example.component';
     CustomeDirectiveComponent,
     CollapseOnClickDirective,
     NgForExampleComponent,
-    NgIfExampleComponent
+    NgIfExampleComponent,
+    NgEventsExampleComponent
 ],
   imports: [
     BrowserModule,
