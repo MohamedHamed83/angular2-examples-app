@@ -6,13 +6,12 @@ import { Directive, HostListener, HostBinding, Input, Output, EventEmitter } fro
 })
 export class CollapseOnClickDirective {
 
-  @Input("collapsed")
-  isCollaped = false;
+  @Input('collapsed')
+  isCollaped = true;
 
-  @Output("collapsed")
+  @Output('collapsed')
   collapsedOutput = new EventEmitter();
 
-  @HostBinding("class.collaped")
   get collaped() {
     return this.isCollaped;
   }

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomeDirectiveComponent implements OnInit {
 
   constructor() { }
-  onToggle(collapsed){
+  onToggle(collapsed) {
     console.log(collapsed);
   }
   ngOnInit() {
