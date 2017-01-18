@@ -15,6 +15,8 @@ import { NgIfExampleComponent } from './ng-if-example/ng-if-example.component';
 import { NgEventsExampleComponent } from './ng-events-example/ng-events-example.component';
 import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import {SortPipe} from './pipes';
+import { ServiceExampleComponent } from './service-example/service-example.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {SortPipe} from './pipes';
     NgIfExampleComponent,
     NgEventsExampleComponent,
     PipesExampleComponent,
-    SortPipe
+    SortPipe,
+    ServiceExampleComponent
 ],
   imports: [
     BrowserModule,
