@@ -13,7 +13,8 @@ import { CollapseOnClickDirective } from './directives/collapse-on-click.directi
 import { NgForExampleComponent } from './ng-for-example/ng-for-example.component';
 import { NgIfExampleComponent } from './ng-if-example/ng-if-example.component';
 import { NgEventsExampleComponent } from './ng-events-example/ng-events-example.component';
-
+import { PipesExampleComponent } from './pipes-example/pipes-example.component';
+import {SortPipe} from './pipes';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,10 @@ import { NgEventsExampleComponent } from './ng-events-example/ng-events-example.
     CustomeDirectiveComponent,
     CollapseOnClickDirective,
     NgForExampleComponent,
-    NgIfExampleComponent,
-    NgEventsExampleComponent
+    NgIfExampleComponent,
+    NgEventsExampleComponent,
+    PipesExampleComponent,
+    SortPipe
 ],
   imports: [
     BrowserModule,
