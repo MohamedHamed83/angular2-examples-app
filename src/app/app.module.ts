@@ -31,7 +31,8 @@ import { ServiceExampleComponent } from './service-example/service-example.compo
     NgIfExampleComponent,
     NgEventsExampleComponent,
     PipesExampleComponent,
-    SortPipe,
+    SortPipe
+,
     ServiceExampleComponent
 ],
   imports: [
