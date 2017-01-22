@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Headers } from '@angular/http';
 import { xhrHeaders } from './xhr-headers';
 import { Lesson } from './lesson';
 import { Observable } from 'rxjs/Rx';
@@ -13,56 +13,22 @@ export class LessonsService {
     this.loadLessons();
   }
   loadLessons() {
-    this.http.get('/api/lessons')
+    this.http.get('/api/lessons', xhrHeaders())
       .map(res => res.json())
-      .subscribe(lessonsData => this.lessons = lessonsData)
+      .subscribe(
+      lessonsData => this.lessons = lessonsData,
+      err => console.error('Error occurred:', err)
+      );
   }
-  // loadLessons(search = ''): Observable<Lesson[]> {
-
-  //   console.log(`searching for ${search}`);
-
-  //   let params: URLSearchParams = new URLSearchParams();
-  //   params.set('search', search);
-
-  //   return this.http.get('/lessons', { search: params }).map(res => res.json());
-  // }
-
-
-  loadFlakyLessons() {
-    return this.http.get('/flakylessons').map(res => res.json());
-  }
-
-  loadDelayedLessons(search = '') {
-
-    console.log(`searching for ${search}`);
-
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('search', search);
-
-    return this.http.get('/delayedlessons', { search: params }).map(res => res.json());
-  }
-
   createLesson(description) {
-
-    const network$ = this.http.post('/lessons',
-      JSON.stringify({ description }),
-      xhrHeaders())
-      .cache();
-
-    network$.subscribe(
-      () => console.log('HTTP post successful !'),
-      err => console.error(err),
-      () => console.log('monitoring completed ...')
-
-    );
-
-    return network$;
-
+    const lesson = { description };
+    this.lessons.push(lesson);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json; charset=utf-8')
+    this.http.post('/api/lessons', JSON.stringify(lesson), headers)
+      .subscribe(
+      () => { },
+      error => console.error(error)
+      );
   }
-
-  delete(lessonId) {
-    return this.http.delete(`/lessons/${lessonId}`, xhrHeaders());
-  }
-
-
 }

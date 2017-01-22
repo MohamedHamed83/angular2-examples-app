@@ -47,7 +47,7 @@ app.route('/api/lessons/:lessonId')
   });
 
 
-app.route('//apiflakylessons')
+app.route('/api/flakylessons')
   .get((req, res) => {
 
     const num = Math.round(Math.random() * 10);

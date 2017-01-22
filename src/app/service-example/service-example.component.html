@@ -1,4 +1,5 @@
 <div class="container">
+  <input class="add-lesson" placeholder="add Lesson" (keyup.enter)="lessonsService.createLesson(input.value)" #input>
 <ul class="list-group" *ngFor="let lesson of lessonsService.lessons">
   <li class="list-group-item">{{lesson.description}}</li>
 
