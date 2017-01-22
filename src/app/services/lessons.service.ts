@@ -1,21 +1,68 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { lessonsData } from '../shared';
-import { Observable } from 'rxjs/observable';
+import { Http, URLSearchParams } from '@angular/http';
+import { xhrHeaders } from './xhr-headers';
+import { Lesson } from './lesson';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
 @Injectable()
 export class LessonsService {
+
   lessons = [];
   constructor(private http: Http) {
     this.loadLessons();
   }
   loadLessons() {
-    this.http.get('/lessons')
+    this.http.get('/api/lessons')
       .map(res => res.json())
-      .subscribe(
-      lessonsData => this.lessons = lessonsData
-      );
+      .subscribe(lessonsData => this.lessons = lessonsData)
   }
+  // loadLessons(search = ''): Observable<Lesson[]> {
+
+  //   console.log(`searching for ${search}`);
+
+  //   let params: URLSearchParams = new URLSearchParams();
+  //   params.set('search', search);
+
+  //   return this.http.get('/lessons', { search: params }).map(res => res.json());
+  // }
+
+
+  loadFlakyLessons() {
+    return this.http.get('/flakylessons').map(res => res.json());
+  }
+
+  loadDelayedLessons(search = '') {
+
+    console.log(`searching for ${search}`);
+
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('search', search);
+
+    return this.http.get('/delayedlessons', { search: params }).map(res => res.json());
+  }
+
+  createLesson(description) {
+
+    const network$ = this.http.post('/lessons',
+      JSON.stringify({ description }),
+      xhrHeaders())
+      .cache();
+
+    network$.subscribe(
+      () => console.log('HTTP post successful !'),
+      err => console.error(err),
+      () => console.log('monitoring completed ...')
+
+    );
+
+    return network$;
+
+  }
+
+  delete(lessonId) {
+    return this.http.delete(`/lessons/${lessonId}`, xhrHeaders());
+  }
+
 
 }
