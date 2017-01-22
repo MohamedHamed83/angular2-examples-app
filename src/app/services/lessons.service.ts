@@ -23,12 +23,19 @@ export class LessonsService {
   createLesson(description) {
     const lesson = { description };
     this.lessons.push(lesson);
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json; charset=utf-8')
-    this.http.post('/api/lessons', JSON.stringify(lesson), headers)
+    this.http.post('/api/lessons', JSON.stringify(lesson), xhrHeaders())
       .subscribe(
       () => { },
       error => console.error(error)
+      );
+  }
+  deleteLesson(lessonId) {
+    const index = this.lessons.findIndex(lesson => lesson.id === lessonId);
+    this.lessons.splice(index, 1);
+    this.http.delete(`/api/lessons/${lessonId}`, xhrHeaders())
+      .subscribe(
+      () => { },
+      err => console.error(err)
       );
   }
 }

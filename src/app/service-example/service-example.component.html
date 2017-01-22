@@ -1,7 +1,11 @@
 <div class="container">
   <input class="add-lesson" placeholder="add Lesson" (keyup.enter)="lessonsService.createLesson(input.value)" #input>
-<ul class="list-group" *ngFor="let lesson of lessonsService.lessons">
-  <li class="list-group-item">{{lesson.description}}</li>
+<table class="table"  *ngFor="let lesson of lessonsService.lessons">
+  <tr><td>{{lesson.description}}</td>
+  <td>
+    <button class="btn btn-default pull-right" (click)="lessonsService.deleteLesson(lesson.id)">Delete</button>
+  </td>
+  </tr>
 
-</ul>
+</table>
 </div>
