@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonsService } from '../services';
-import { initLessonsObservable } from '../shared/observable.service';
+import { initLessonsObservable } from '../services'
 
 @Component({
   selector: 'service-example',
