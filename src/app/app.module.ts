@@ -17,7 +17,6 @@ import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import {SortPipe} from './pipes';
 import { ServiceExampleComponent } from './service-example/service-example.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +30,7 @@ import { ServiceExampleComponent } from './service-example/service-example.compo
     NgIfExampleComponent,
     NgEventsExampleComponent,
     PipesExampleComponent,
-    SortPipe
-,
+    SortPipe,
     ServiceExampleComponent
 ],
   imports: [

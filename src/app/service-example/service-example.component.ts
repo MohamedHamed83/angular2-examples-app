@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonsService } from '../services';
+import { initLessonsObservable } from '../shared/observable.service';
+
 @Component({
   selector: 'service-example',
   templateUrl: './service-example.component.html',
@@ -8,7 +10,9 @@ import { LessonsService } from '../services';
 })
 export class ServiceExampleComponent implements OnInit {
 
-  constructor(private lessonsService: LessonsService) { }
+  constructor(private lessonsService: LessonsService) {
+    initLessonsObservable();
+  }
 
   ngOnInit() {
   }
