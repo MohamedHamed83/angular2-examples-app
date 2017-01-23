@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs/Rx';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LessonsService } from '../services';
 import { Lesson } from '../services';
-import { combineObservales } from '../services';
+// import { combineObservales } from '../services';
 
 @Component({
   selector: 'observable-example',
@@ -10,14 +10,20 @@ import { combineObservales } from '../services';
   styleUrls: ['./observable-example.component.css'],
   providers: [LessonsService]
 })
-export class ObservableExampleComponent implements OnInit {
+export class ObservableExampleComponent {
   lessonsObservable: Observable<Lesson[]>;
   constructor(private lessonsService: LessonsService) {
-    combineObservales();
+    // combineObservales();
     this.lessonsObservable = lessonsService.loadLessons();
   }
-
-  ngOnInit() {
+  saveLessons(description) {
+    this.lessonsService.createLesson(description)
+      .subscribe(
+      () => {
+        this.lessonsObservable = this.lessonsService.loadLessons()
+        console.log('lesson save successfully')
+      },
+      err => console.error(err)
+      );
   }
-
 }

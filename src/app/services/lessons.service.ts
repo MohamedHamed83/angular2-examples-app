@@ -19,11 +19,14 @@ export class LessonsService {
   createLesson(description) {
     const lesson = { description };
     this.lessons.push(lesson);
-    this.http.post('/api/lessons', JSON.stringify(lesson), xhrHeaders())
-      .subscribe(
-      () => { },
+    const postLesson$ = this.http.post('/api/lessons', JSON.stringify(lesson), xhrHeaders())
+      // each subscribe will do serpert call to avoid that we need to call cache()
+      .cache();
+    postLesson$.subscribe(
+      () => console.log(description),
       error => console.error(error)
-      );
+    );
+    return postLesson$;
   }
   deleteLesson(lessonId) {
     const index = this.lessons.findIndex(lesson => lesson.id === lessonId);

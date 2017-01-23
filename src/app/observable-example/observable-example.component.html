@@ -1,5 +1,5 @@
 <div class="container">
-  <input class="add-lesson" placeholder="add Lesson" #input>
+  <input class="add-lesson" placeholder="add Lesson" (keyup.enter)="saveLessons(input.value)" #input>
   <div> Total Lessons: {{ (lessonsObservable | async)?.length }}  </div>
   <table class="table" *ngFor="let lesson of lessonsObservable | async">
     <tr>
