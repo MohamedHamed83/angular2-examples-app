@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import { LessonsService } from '../services';
 import { Lesson } from '../services';
-import { initLessonsObservable } from '../services';
+import { combineObservales } from '../services';
 
 @Component({
   selector: 'observable-example',
@@ -13,7 +13,7 @@ import { initLessonsObservable } from '../services';
 export class ObservableExampleComponent implements OnInit {
   lessonsObservable: Observable<Lesson[]>;
   constructor(private lessonsService: LessonsService) {
-    // initLessonsObservable();
+    combineObservales();
     this.lessonsObservable = lessonsService.loadLessons();
   }
 

@@ -1,3 +1,3 @@
 export { LessonsService } from './lessons.service';
 export { Lesson } from './lesson';
-export { initLessonsObservable } from '../services/observable.service';
+export { initLessonsObservable , combineObservales} from '../services/observable.service';
