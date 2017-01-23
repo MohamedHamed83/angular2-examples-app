@@ -26,6 +26,7 @@ export class ObservableExampleComponent {
       err => console.error(err)
       );
   }
+  // combin result example
   consecutiveReqs() {
     const deletFirst$ = this.lessonsService.deleteLesson(1);
     const deleteScond$ = this.lessonsService.deleteLesson(2);
@@ -43,5 +44,18 @@ export class ObservableExampleComponent {
         this.lessonsObservable = reload;
       },
     );
+  }
+// they will not be return in order second call can be return before the first
+  parallelRequests() {
+    const lessons$ = this.lessonsService.loadLessons();
+    const moreLessons$ = this.lessonsService.loadLessons();
+    const both$ = Observable.combineLatest(
+      lessons$,
+      moreLessons$);
+    both$.subscribe(
+      result => console.log(result),
+      () => { },
+      () => console.log('completed')
+    )
   }
 }
