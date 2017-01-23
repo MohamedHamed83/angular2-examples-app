@@ -29,12 +29,6 @@ export class LessonsService {
     return postLesson$;
   }
   deleteLesson(lessonId) {
-    const index = this.lessons.findIndex(lesson => lesson.id === lessonId);
-    this.lessons.splice(index, 1);
-    this.http.delete(`/api/lessons/${lessonId}`, xhrHeaders())
-      .subscribe(
-      () => { },
-      err => console.error(err)
-      );
+   return this.http.delete(`/api/lessons/${lessonId}`, xhrHeaders());
   }
 }
