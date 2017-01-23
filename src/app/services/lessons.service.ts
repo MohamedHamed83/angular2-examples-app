@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams, Headers } from '@angular/http';
+import { Http, URLSearchParams, Headers, Response } from '@angular/http';
 import { xhrHeaders } from './xhr-headers';
 import { Lesson } from './lesson';
 import { Observable } from 'rxjs/Rx';
@@ -12,13 +12,9 @@ export class LessonsService {
   constructor(private http: Http) {
     this.loadLessons();
   }
-  loadLessons() {
-    this.http.get('/api/lessons', xhrHeaders())
-      .map(res => res.json())
-      .subscribe(
-      lessonsData => this.lessons = lessonsData,
-      err => console.error('Error occurred:', err)
-      );
+  loadLessons(): Observable<Lesson[]> {
+    return this.http.get('/api/lessons')
+      .map((res: Response) => res.json());
   }
   createLesson(description) {
     const lesson = { description };

@@ -16,6 +16,7 @@ import { NgEventsExampleComponent } from './ng-events-example/ng-events-example.
 import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import {SortPipe} from './pipes';
 import { ServiceExampleComponent } from './service-example/service-example.component';
+import { ObservableExampleComponent } from './observable-example/observable-example.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ServiceExampleComponent } from './service-example/service-example.compo
     NgEventsExampleComponent,
     PipesExampleComponent,
     SortPipe,
-    ServiceExampleComponent
+    ServiceExampleComponent,
+    ObservableExampleComponent
 ],
   imports: [
     BrowserModule,
