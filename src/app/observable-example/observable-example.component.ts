@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import { LessonsService } from '../services';
 import { Lesson } from '../services';
@@ -8,12 +9,9 @@ import { Lesson } from '../services';
   providers: [LessonsService]
 })
 export class ObservableExampleComponent implements OnInit {
-  lessonsArray: Lesson[];
+  lessonsObservable: Observable<Lesson[]>;
   constructor(private lessonsService: LessonsService) {
-    const lessons$ = lessonsService.loadLessons();
-    lessons$.subscribe(
-      (ls: Lesson[]) => this.lessonsArray = ls
-    );
+    this.lessonsObservable = lessonsService.loadLessons();
   }
 
   ngOnInit() {
