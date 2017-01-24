@@ -14,7 +14,8 @@ export class ObservableExampleComponent {
   lessonsObservable: Observable<Lesson[]>;
   constructor(private lessonsService: LessonsService) {
     // combineObservales();
-    this.lessonsObservable = lessonsService.loadLessons().cache();
+    // this.lessonsObservable = lessonsService.loadflakylessons().retry();
+    this.lessonsObservable = lessonsService.loadflakylessons().retryWhen(error => error.delay(5000));
   }
   saveLessons(description) {
     this.lessonsService.createLesson(description)

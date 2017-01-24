@@ -16,6 +16,10 @@ export class LessonsService {
     return this.http.get('/api/lessons')
       .map((res: Response) => res.json());
   }
+  loadflakylessons(): Observable<Lesson[]> {
+    return this.http.get('/api/flakylessons')
+      .map((res: Response) => res.json());
+  }
   createLesson(description) {
     const lesson = { description };
     this.lessons.push(lesson);
