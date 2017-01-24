@@ -45,7 +45,7 @@ export class ObservableExampleComponent {
       },
     );
   }
-// they will not be return in order second call can be return before the first
+  // they will not be return in order second call can be return before the first
   parallelRequests() {
     const lessons$ = this.lessonsService.loadLessons();
     const moreLessons$ = this.lessonsService.loadLessons();
@@ -57,5 +57,19 @@ export class ObservableExampleComponent {
       () => { },
       () => console.log('completed')
     )
+  }
+  requestChain() {
+    const lesson = 'new lesson';
+    const anotherlesson = 'another lesson';
+    const chain$ = this.lessonsService.createLesson(lesson)
+      .switchMap(result => this.lessonsService.createLesson(anotherlesson))
+      .switchMap(() => this.lessonsService.loadLessons())
+      .cache();
+    this.lessonsObservable = chain$;
+    chain$.subscribe(
+      value => console.log(value),
+      error => console.log(error),
+      () => console.log('completed')
+    );
   }
 }
