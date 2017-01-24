@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { LessonsService } from '../services';
 import { Lesson } from '../services';
 // import { combineObservales } from '../services';
@@ -10,12 +10,13 @@ import { Lesson } from '../services';
   styleUrls: ['./observable-example.component.css'],
   providers: [LessonsService]
 })
-export class ObservableExampleComponent {
+export class ObservableExampleComponent implements AfterViewInit {
   lessonsObservable: Observable<Lesson[]>;
   constructor(private lessonsService: LessonsService) {
     // combineObservales();
     // this.lessonsObservable = lessonsService.loadflakylessons().retry();
-    this.lessonsObservable = lessonsService.loadflakylessons().retryWhen(error => error.delay(5000));
+    // this.lessonsObservable = lessonsService.loadflakylessons().retryWhen(error => error.delay(5000));
+    this.lessonsObservable = lessonsService.loadLessons();
   }
   saveLessons(description) {
     this.lessonsService.createLesson(description)
@@ -71,6 +72,15 @@ export class ObservableExampleComponent {
       value => console.log(value),
       error => console.log(error),
       () => console.log('completed')
+    );
+  }
+  ngAfterViewInit() {
+    const input: any = document.getElementById('searchLesson');
+    const search$ = Observable.fromEvent(input, 'keyup')
+      .do(() => console.log(input.value))
+      .switchMap(() => this.lessonsService.loadLessons(input.value));
+    search$.subscribe(
+      lessson => this.lessonsObservable = lessson
     );
   }
 }

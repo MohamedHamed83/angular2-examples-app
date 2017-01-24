@@ -1,7 +1,13 @@
 <div class="container">
-  <input class="add-lesson" placeholder="add Lesson" (keyup.enter)="saveLessons(input.value)" #input>
-  <button (click)="requestChain()" class="btn btn-default">Delete and Reload</button>
-  <div> Total Lessons: {{ (lessonsObservable | async)?.length }}  </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <input class="form-control" placeholder="Search" id="searchLesson">
+      <!--<input class="form-control" placeholder="add Lesson" (keyup.enter)="saveLessons(input.value)" #input>-->
+      <button (click)="requestChain()" type="submit" class="btn btn-default form-control">Delete and Reload</button>
+      <button class="btn btn-default form-control" type="submit" (click)='cancel()'>cancel</button>
+    </div>
+  </form>
+  <div> Total Lessons: {{ (lessonsObservable | async)?.length }} </div>
   <table class="table" *ngFor="let lesson of lessonsObservable | async">
     <tr>
       <td>{{lesson.description}}</td>

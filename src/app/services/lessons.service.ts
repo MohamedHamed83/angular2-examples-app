@@ -12,8 +12,18 @@ export class LessonsService {
   constructor(private http: Http) {
     this.loadLessons();
   }
-  loadLessons(): Observable<Lesson[]> {
-    return this.http.get('/api/lessons')
+  // loadLessons(): Observable<Lesson[]> {
+  //   return this.http.get('/api/lessons')
+  //     .map((res: Response) => res.json());
+  // }
+  loadLessons(search = ''): Observable<Lesson[]> {
+    console.log(`searching for ${search}`);
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('search', search);
+    return this.http.get('/api/lessons', {search: params}).map(res => res.json());
+  }
+  loadDelayedlessons(): Observable<Lesson[]> {
+    return this.http.get('/api/delayedlessons')
       .map((res: Response) => res.json());
   }
   loadflakylessons(): Observable<Lesson[]> {
@@ -33,6 +43,6 @@ export class LessonsService {
     return postLesson$;
   }
   deleteLesson(lessonId) {
-   return this.http.delete(`/api/lessons/${lessonId}`, xhrHeaders());
+    return this.http.delete(`/api/lessons/${lessonId}`, xhrHeaders());
   }
 }

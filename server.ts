@@ -20,7 +20,7 @@ const lessons = lessonsData;
 app.route('/api/lessons')
   .get((req, res) => {
 
-    var filtered = lessons;
+    let filtered = lessons;
 
     if (req.query.search) {
       console.log(req.query.search);
@@ -69,7 +69,7 @@ app.route('/api/delayedlessons')
 
     setTimeout(() => {
 
-      var filtered = lessons;
+      let filtered = lessons;
 
       if (req.query.search) {
         console.log(req.query.search);
